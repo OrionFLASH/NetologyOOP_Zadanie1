@@ -106,40 +106,40 @@ def calculate_avg_lecture_grade(lecturers, course):
     return round(total / count, 1) if count > 0 else 0
 
 
-student1 = Student('Ruoy', 'Eman', 'male')
-student1.courses_in_progress += ['Python', 'Git']
+student1 = Student('Олег', 'Иванов', 'male')
+student1.courses_in_progress += ['Разработчик', 'Дизайнер']
 student1.finished_courses += ['Введение в программирование']
 
-student2 = Student('Anna', 'Smith', 'female')
-student2.courses_in_progress += ['Python']
+student2 = Student('Анна', 'Петрова', 'female')
+student2.courses_in_progress += ['Разработчик']
 student2.finished_courses += ['Основы программирования']
 
-lecturer1 = Lecturer('Some', 'Buddy')
-lecturer1.courses_attached += ['Python']
+lecturer1 = Lecturer('Петр', 'Смирнов')
+lecturer1.courses_attached += ['Разработчик']
 
-lecturer2 = Lecturer('John', 'Doe')
-lecturer2.courses_attached += ['Git']
+lecturer2 = Lecturer('Семен', 'Тутуев')
+lecturer2.courses_attached += ['Дизайнер']
 
-reviewer1 = Reviewer('Mike', 'Johnson')
-reviewer1.courses_attached += ['Python']
+reviewer1 = Reviewer('Виктор', 'Леманов')
+reviewer1.courses_attached += ['Разработчик']
 
-reviewer2 = Reviewer('Emily', 'Brown')
-reviewer2.courses_attached += ['Git']
+reviewer2 = Reviewer('Василий', 'Теркин')
+reviewer2.courses_attached += ['Дизайнер']
 
-reviewer1.rate_hw(student1, 'Python', 10)
-reviewer1.rate_hw(student1, 'Python', 9)
-reviewer1.rate_hw(student2, 'Python', 8)
+reviewer1.rate_hw(student1, 'Разработчик', 10)
+reviewer1.rate_hw(student1, 'Разработчик', 7)
+reviewer1.rate_hw(student2, 'Разработчик', 4)
 
-student1.rate_lecturer(lecturer1, 'Python', 10)
-student1.rate_lecturer(lecturer1, 'Python', 9)
-student2.rate_lecturer(lecturer1, 'Python', 8)
+student1.rate_lecturer(lecturer1, 'Разработчик', 7)
+student1.rate_lecturer(lecturer1, 'Разработчик', 2)
+student2.rate_lecturer(lecturer1, 'Разработчик', 9)
 
 print(reviewer1)
-print()
+print("---")
 print(lecturer1)
-print()
+print("---")
 print(student1)
-print()
+print("---")
 
 print(student1 > student2)
 print(lecturer1 == lecturer2)
@@ -147,5 +147,5 @@ print(lecturer1 == lecturer2)
 students = [student1, student2]
 lecturers = [lecturer1, lecturer2]
 
-print(f"Средняя оценка за домашние задания по курсу Python: {calculate_avg_hw_grade(students, 'Python')}")
-print(f"Средняя оценка за лекции по курсу Python: {calculate_avg_lecture_grade(lecturers, 'Python')}")
+print(f"Средняя оценка за домашние задания по курсу Разработчик: {calculate_avg_hw_grade(students, 'Разработчик')}")
+print(f"Средняя оценка за лекции по курсу Разработчик: {calculate_avg_lecture_grade(lecturers, 'Разработчик')}")
