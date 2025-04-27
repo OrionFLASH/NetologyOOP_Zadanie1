@@ -84,3 +84,68 @@ class Reviewer(Mentor):
 
     def __str__(self):
         return super().__str__()
+
+
+def calculate_avg_hw_grade(students, course):
+    total = 0
+    count = 0
+    for student in students:
+        if course in student.grades:
+            total += sum(student.grades[course])
+            count += len(student.grades[course])
+    return round(total / count, 1) if count > 0 else 0
+
+
+def calculate_avg_lecture_grade(lecturers, course):
+    total = 0
+    count = 0
+    for lecturer in lecturers:
+        if course in lecturer.grades:
+            total += sum(lecturer.grades[course])
+            count += len(lecturer.grades[course])
+    return round(total / count, 1) if count > 0 else 0
+
+
+student1 = Student('Ruoy', 'Eman', 'male')
+student1.courses_in_progress += ['Python', 'Git']
+student1.finished_courses += ['Введение в программирование']
+
+student2 = Student('Anna', 'Smith', 'female')
+student2.courses_in_progress += ['Python']
+student2.finished_courses += ['Основы программирования']
+
+lecturer1 = Lecturer('Some', 'Buddy')
+lecturer1.courses_attached += ['Python']
+
+lecturer2 = Lecturer('John', 'Doe')
+lecturer2.courses_attached += ['Git']
+
+reviewer1 = Reviewer('Mike', 'Johnson')
+reviewer1.courses_attached += ['Python']
+
+reviewer2 = Reviewer('Emily', 'Brown')
+reviewer2.courses_attached += ['Git']
+
+reviewer1.rate_hw(student1, 'Python', 10)
+reviewer1.rate_hw(student1, 'Python', 9)
+reviewer1.rate_hw(student2, 'Python', 8)
+
+student1.rate_lecturer(lecturer1, 'Python', 10)
+student1.rate_lecturer(lecturer1, 'Python', 9)
+student2.rate_lecturer(lecturer1, 'Python', 8)
+
+print(reviewer1)
+print()
+print(lecturer1)
+print()
+print(student1)
+print()
+
+print(student1 > student2)
+print(lecturer1 == lecturer2)
+
+students = [student1, student2]
+lecturers = [lecturer1, lecturer2]
+
+print(f"Средняя оценка за домашние задания по курсу Python: {calculate_avg_hw_grade(students, 'Python')}")
+print(f"Средняя оценка за лекции по курсу Python: {calculate_avg_lecture_grade(lecturers, 'Python')}")
